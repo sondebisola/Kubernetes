@@ -1,0 +1,21 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequireNamespaceAuthzPolicies
+metadata:
+  name: require-namespace-authz-policies
+  annotations:
+    configsync.gke.io/cluster-name-selector: CLUSTER_1
+spec:
+  enforcementAction: dryrun
+  match:
+    excludedNamespaces:
+      - kube-system
+      - kube-node-lease
+      - kube-public
+      - gatekeeper-system
+      - config-management-system
+      - config-management-monitoring
+      - resource-group-system
+      - istio-system
+      - asm-gateways
+      - gke-connect
+      - default

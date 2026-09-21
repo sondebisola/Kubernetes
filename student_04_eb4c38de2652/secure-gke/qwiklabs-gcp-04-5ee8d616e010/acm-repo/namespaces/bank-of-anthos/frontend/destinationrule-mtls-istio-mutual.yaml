@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: destrule-mtls-istio-mutual
+  namespace: frontend
+spec:
+  host: frontend
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_CONN
+    tls:
+      mode: ISTIO_MUTUAL

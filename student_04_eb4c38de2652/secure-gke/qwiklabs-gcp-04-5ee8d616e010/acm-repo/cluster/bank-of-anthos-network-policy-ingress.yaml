@@ -1,0 +1,35 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-ingress
+spec:
+  podSelector: {}
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: acounts-db
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: balance-reader
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: contacts
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: frontend
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ledger-db
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ledger-writer
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: loadgenerator
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: transaction-history
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: userservice

@@ -1,0 +1,14 @@
+applySpecVersion: 1
+spec:
+  configSync:
+    enabled: true
+    sourceFormat: hierarchy
+    syncRepo: ${REPO_URL}
+    syncBranch: main
+    secretType: gcpserviceaccount
+    gcpServiceAccountEmail: ${GSA_READER}@${PROJECT_ID}.iam.gserviceaccount.com
+  policyController:
+    enabled: true
+    referentialRulesEnabled: true
+    auditIntervalSeconds: 5
+    logDeniesEnabled: true

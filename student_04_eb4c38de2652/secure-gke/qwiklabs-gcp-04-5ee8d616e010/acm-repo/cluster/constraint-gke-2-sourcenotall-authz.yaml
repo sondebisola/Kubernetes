@@ -1,0 +1,14 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: SourceNotAllAuthz
+metadata:
+  name: sourcenotall-authz
+  annotations:
+    configsync.gke.io/cluster-name-selector: CLUSTER_2
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups:
+          - security.istio.io
+        kinds:
+          - AuthorizationPolicy

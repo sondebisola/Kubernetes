@@ -1,0 +1,14 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: DestinationRuleTLSEnabledBeta
+metadata:
+  name: destinationrule-mtls-enabled
+  annotations:
+    configsync.gke.io/cluster-name-selector: CLUSTER_1
+spec:
+  enforcementAction: dryrun
+  match:
+    kinds:
+      - apiGroups:
+          - networking.istio.io
+        kinds:
+          - DestinationRule

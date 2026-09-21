@@ -1,0 +1,44 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: bank-authz-policy
+spec:
+  action: ALLOW
+  rules:
+    - from:
+        - source:
+            principals: ["cluster.local/ns/loadgenerator/sa/default"]
+        - source:
+            namespaces: ["loadgenerator"]
+        - source:
+            principals: ["cluster.local/ns/accounts-db/sa/default"]
+        - source:
+            namespaces: ["accounts-db"]
+        - source:
+            principals: ["cluster.local/ns/balance-reader/sa/default"]
+        - source:
+            namespaces: ["balance-reader"]
+        - source:
+            principals: ["cluster.local/ns/contacts/sa/default"]
+        - source:
+            namespaces: ["contacts"]
+        - source:
+            principals: ["cluster.local/ns/frontend/sa/default"]
+        - source:
+            namespaces: ["frontend"]
+        - source:
+            principals: ["cluster.local/ns/ledger-db/sa/default"]
+        - source:
+            namespaces: ["ledger-db"]
+        - source:
+            principals: ["cluster.local/ns/ledger-writer/sa/default"]
+        - source:
+            namespaces: ["ledger-writer"]
+        - source:
+            principals: ["cluster.local/ns/transaction-history/sa/default"]
+        - source:
+            namespaces: ["transaction-history"]
+        - source:
+            principals: ["cluster.local/ns/userservice/sa/default"]
+        - source:
+            namespaces: ["userservice"]
